@@ -1,4 +1,4 @@
-rootProject.name = "202411-otus-sy-marketplace"
+rootProject.name = "cat-sitter"
 
 pluginManagement {
     plugins {
@@ -7,4 +7,9 @@ pluginManagement {
     }
 }
 
-include("m1l1-first")
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
+}
+
+includeBuild("lessons")
+includeBuild("cat-sitter-be")
