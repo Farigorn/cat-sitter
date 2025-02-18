@@ -4,13 +4,49 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/build-plugin" name="backend-build">
+                <projects>
+                  <project path="$PROJECT_DIR$/build-plugin" />
+                </projects>
+              </build>
+              <build path="$PROJECT_DIR$/cat-sitter-be" name="cat-sitter-be">
+                <projects>
+                  <project path="$PROJECT_DIR$/cat-sitter-be" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-api-jackson" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-common" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-mappers" />
+                </projects>
+              </build>
+              <build path="$PROJECT_DIR$/lessons" name="lessons">
+                <projects>
+                  <project path="$PROJECT_DIR$/lessons" />
+                  <project path="$PROJECT_DIR$/lessons/m1l1-first" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="" />
+        <option name="gradleJvm" value="corretto-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/build-plugin" />
+            <option value="$PROJECT_DIR$/cat-sitter-be" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-api-jackson" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-common" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-mappers" />
+            <option value="$PROJECT_DIR$/lessons" />
+            <option value="$PROJECT_DIR$/lessons/m1l1-first" />
           </set>
         </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-api-kmp" />
+        <option name="gradleJvm" value="corretto-21" />
       </GradleProjectSettings>
     </option>
   </component>

@@ -21,3 +21,7 @@ pluginManagement {
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+include(":cat-sitter-api-jackson")
+include(":cat-sitter-mappers")
+include(":cat-sitter-common")

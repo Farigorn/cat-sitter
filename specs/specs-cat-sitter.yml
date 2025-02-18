@@ -1,0 +1,385 @@
+openapi: 3.0.4
+info:
+  title: Cat Sitter API
+  description: cat-sitter api helps people find cat sitter for their cats
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: booking
+    description: заказ ( бронь ситтера)
+
+paths:
+  /booking/create:
+    post:
+      tags:
+        - booking
+      summary: Создание бронирования
+      operationId: createBooking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingCreateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingCreateResponse'
+  /booking/read:
+    post:
+      tags:
+        - booking
+      summary: чтение бронирования
+      operationId: readBooking
+      requestBody:
+        description: Request body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingReadRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingReadResponse'
+  /booking/update:
+    post:
+      tags:
+        - booking
+      summary: "Обновление статуса бронирования"
+      operationId: updateBooking
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingUpdateRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingUpdateResponse'
+  /booking/delete:
+    post:
+      tags:
+        - booking
+      summary: Удаление бронирования
+      operationId: deleteBooking
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingDeleteRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingDeleteResponse'
+
+
+components:
+  schemas:
+    IRequest:
+      type: object
+      description: Базовый интерфейс запроса
+      properties:
+        requestType:
+          type: string
+          description: Поле-дескриминатор для вычисления типа запроса
+          example: create
+      discriminator:
+        propertyName: requestType
+        mapping:
+          create: '#/components/schemas/BookingCreateRequest'
+          update: '#/components/schemas/BookingUpdateRequest'
+          delete: '#/components/schemas/BookingDeleteRequest'
+          read: "#/components/schemas/BookingReadRequest"
+
+    BookingCreateRequest:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/BookingRequestDebug'
+        - $ref: '#/components/schemas/BaseBookingRequest'
+
+    BookingReadRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/BookingRequestDebug'
+        - type: object
+          properties:
+            booking:
+              $ref: '#/components/schemas/BookingReadObject'
+
+
+
+    BookingReadObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Идентификатор объявления
+
+    BookingDeleteObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: Идентификатор объявления
+            lock:
+              type: string
+              description: Версия оптимистичной блокировки
+
+    BookingUpdateRequest:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/BookingRequestDebug'
+        - $ref: '#/components/schemas/UpdateBookingObject'
+      properties:
+        lock:
+          type: string
+          description: Версия оптимистичной блокировки
+
+    BookingDeleteRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/BookingRequestDebug'
+        - type: object
+          properties:
+            booking:
+              $ref: '#/components/schemas/BookingDeleteObject'
+
+    UpdateBookingObject:
+      allOf:
+        - $ref: '#/components/schemas/BaseBookingRequest'
+        - type: object
+          properties:
+            lock:
+              type: string
+              description: Версия оптимистичной блокировки
+            id:
+              type: string
+              format: uuid
+              description: Идентификатор объявления
+
+
+
+
+    BaseBookingRequest:
+      type: object
+      properties:
+        ownerId:
+          type: string
+          format: uuid
+          description: id владельца кошки
+        sitterId:
+          type: string
+          format: uuid
+          description: id ситтера
+        startDate:
+          type: string
+          format: date-time
+          description: дата начала бронирования
+        endDate:
+          type: string
+          format: date-time
+          description: дата окончания бронирования
+        notes:
+          type: string
+          description: дополнительные пожелания владельца (корм, лоток, поведение)
+
+    AdDeleteObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            lock:
+              type: string
+              description: Версия оптимистичной блокировки
+
+    BookingStatus:
+      type: string
+      description: Перечисление статусов бронирования
+      enum:
+        - NEW
+        - ACCEPTED
+        - REJECTED
+        - CANCELLED
+
+
+    BookingRequestDebug:
+      type: object
+      properties:
+        debug:
+          $ref: '#/components/schemas/BookingDebug'
+
+    BookingDebug:
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/BookingRequestDebugMode'
+        stub:
+          $ref: '#/components/schemas/BookingRequestDebugStubs'
+
+    BookingRequestDebugStubs:
+      type: string
+      description: Перечисления всех стабов
+      enum:
+        - success
+        - notFound
+        - badId
+        - badTitle
+        - badDescription
+        - badVisibility
+        - cannotDelete
+        - badSearchString
+
+
+    BookingRequestDebugMode:
+      type: string
+      enum:
+        - prod
+        - test
+        - stub
+
+    IResponse:
+      type: object
+      description: Базовый интерфейс ответа
+      properties:
+        responseType:
+          type: string
+          description: Поле декриминатор для вычисления типа ответа
+          example: create
+        result:
+          $ref: '#/components/schemas/ResponseResult'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+
+      discriminator:
+        propertyName: responseType
+        mapping:
+          create: '#/components/schemas/BookingCreateResponse'
+          update: '#/components/schemas/BookingUpdateResponse'
+          delete: '#/components/schemas/BookingDeleteResponse'
+          read: '#/components/schemas/BookingReadResponse'
+
+    ResponseResult:
+      type: string
+      enum:
+        - success
+        - error
+
+
+
+
+    BookingCreateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/BookingResponseSingle'
+
+    BookingUpdateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/BookingResponseSingle'
+
+    BookingDeleteResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/BookingResponseSingle'
+
+    BookingReadResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/BookingResponseSingle'
+
+
+    BookingResponseSingle:
+      type: object
+      properties:
+        booking:
+          $ref: '#/components/schemas/BookingResponseObject'
+
+
+    BookingResponseMulti:
+      type: object
+      properties:
+        bookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingResponseObject'
+
+    BookingResponseObject:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: id бронирования
+        ownerId:
+          type: string
+          format: uuid
+          description: id владельца кошки
+        sitterId:
+          type: string
+          format: uuid
+          description: id ситтера
+        startDate:
+          type: string
+          format: date-time
+          description: дата начала бронирования
+        endDate:
+          type: string
+          format: date-time
+          description: дата окончания бронирования
+        notes:
+          type: string
+          description: дополнительные пожелания владельца (корм, лоток, поведение)
+        status:
+          $ref: '#/components/schemas/BookingStatus'
+
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Код ошибки
+        message:
+          type: string
+          description: Сообщение об ошибке
+        group:
+          type: string
+        field:
+          type: string
+
+
+
+
+
+
