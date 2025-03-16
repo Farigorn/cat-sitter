@@ -11,4 +11,5 @@ dependencies {
     implementation(libs.jackson.kotlin)
     api(libs.kotlinx.datetime)
     implementation(kotlin("test"))
+    api("ru.catsitter.libs:cat-sitter-lib-logging-common")
 }
