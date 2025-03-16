@@ -17,7 +17,7 @@ openApiGenerate {
     apiPackage.set("$openapiGroup.api")
     modelPackage.set("$openapiGroup.model")
     inputSpec.set(rootProject.ext["specs-cat-sitter"] as String)
-
+    inputSpec.set(rootProject.ext["spec-log1"] as String)
     /**
      * Здесь указываем, что нам нужны только модели, все остальное не нужно
      * https://openapi-generator.tech/docs/globals

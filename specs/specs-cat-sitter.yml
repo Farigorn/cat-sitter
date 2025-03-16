@@ -295,9 +295,6 @@ components:
         - success
         - error
 
-
-
-
     BookingCreateResponse:
       allOf:
         - $ref: '#/components/schemas/IResponse'
