@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.kotlin.multiplatfom) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
 }
 
 group = "ru.otus.su.catsitter"
