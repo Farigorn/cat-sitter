@@ -16,14 +16,21 @@
                 <projects>
                   <project path="$PROJECT_DIR$/cat-sitter-be" />
                   <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-api-jackson" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-api-log" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-app-common" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-app-ktor" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-biz" />
                   <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-common" />
                   <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-mappers" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-rabbit" />
+                  <project path="$PROJECT_DIR$/cat-sitter-be/cat-sitter-stubs" />
                 </projects>
               </build>
-              <build path="$PROJECT_DIR$/lessons" name="lessons">
+              <build path="$PROJECT_DIR$/cat-sitter-libs" name="cat-sitter-libs">
                 <projects>
-                  <project path="$PROJECT_DIR$/lessons" />
-                  <project path="$PROJECT_DIR$/lessons/m1l1-first" />
+                  <project path="$PROJECT_DIR$/cat-sitter-libs" />
+                  <project path="$PROJECT_DIR$/cat-sitter-libs/cat-sitter-lib-logging-common" />
+                  <project path="$PROJECT_DIR$/cat-sitter-libs/cat-sitter-lib-logging-logback" />
                 </projects>
               </build>
             </builds>
@@ -37,10 +44,17 @@
             <option value="$PROJECT_DIR$/build-plugin" />
             <option value="$PROJECT_DIR$/cat-sitter-be" />
             <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-api-jackson" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-api-log" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-app-common" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-app-ktor" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-biz" />
             <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-common" />
             <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-mappers" />
-            <option value="$PROJECT_DIR$/lessons" />
-            <option value="$PROJECT_DIR$/lessons/m1l1-first" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-rabbit" />
+            <option value="$PROJECT_DIR$/cat-sitter-be/cat-sitter-stubs" />
+            <option value="$PROJECT_DIR$/cat-sitter-libs" />
+            <option value="$PROJECT_DIR$/cat-sitter-libs/cat-sitter-lib-logging-common" />
+            <option value="$PROJECT_DIR$/cat-sitter-libs/cat-sitter-lib-logging-logback" />
           </set>
         </option>
       </GradleProjectSettings>
