@@ -1,4 +1,4 @@
-import com.otus.sy.catsitter.api.model.*
+import com.otus.sy.catsitter.api.models.*
 import exceptions.UnknownRequestClass
 import models.*
 import stubs.MkplStubs
@@ -30,8 +30,8 @@ private fun BookingDebug?.transportToStubCase(): MkplStubs = when (this?.stub) {
     BookingRequestDebugStubs.SUCCESS -> MkplStubs.SUCCESS
     BookingRequestDebugStubs.NOT_FOUND -> MkplStubs.NOT_FOUND
     BookingRequestDebugStubs.BAD_ID -> MkplStubs.BAD_ID
-    BookingRequestDebugStubs.BAD_TITLE -> MkplStubs.BAD_TITLE
-    BookingRequestDebugStubs.BAD_DESCRIPTION -> MkplStubs.BAD_DESCRIPTION
+    BookingRequestDebugStubs.BAD_OWNER_ID -> MkplStubs.BAD_OWNER_ID
+    BookingRequestDebugStubs.BAD_SITTER_ID -> MkplStubs.BAD_SITTER_ID
     BookingRequestDebugStubs.BAD_VISIBILITY -> MkplStubs.BAD_VISIBILITY
     BookingRequestDebugStubs.CANNOT_DELETE -> MkplStubs.CANNOT_DELETE
     BookingRequestDebugStubs.BAD_SEARCH_STRING -> MkplStubs.BAD_SEARCH_STRING

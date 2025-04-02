@@ -8,5 +8,7 @@ dependencies {
     implementation(project(":cat-sitter-mappers"))
     implementation(project(":cat-sitter-stubs"))
     implementation(kotlin("test-junit"))
+    api(libs.coroutines.test)
+    api("ru.catsitter.libs:cat-sitter-libs-core")
 
 }

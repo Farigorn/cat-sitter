@@ -9,9 +9,13 @@ data class MkplContext(
     var workMode: MkplWorkMode = MkplWorkMode.PROD,
     var stubCase: MkplStubs = MkplStubs.NONE,
 
+    var corSettings: MkplCorSettings = MkplCorSettings(),
+
     var requestId: MkplRequestId = MkplRequestId.NONE,
     var timeStart: Instant = Instant.NONE,
     var bookingRequest: MkplBooking = MkplBooking(),
+
+    var bookingValidating: MkplBooking = MkplBooking(),
 
     var bookingResponse: MkplBooking = MkplBooking(),
     var bookingResponses: MutableList<MkplBooking> = mutableListOf(),

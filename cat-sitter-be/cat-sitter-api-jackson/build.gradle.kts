@@ -15,7 +15,7 @@ openApiGenerate {
     generatorName.set("kotlin")
     packageName.set(openapiGroup)
     apiPackage.set("$openapiGroup.api")
-    modelPackage.set("$openapiGroup.model")
+    modelPackage.set("$openapiGroup.models")
     inputSpec.set(rootProject.ext["specs-cat-sitter"] as String)
     inputSpec.set(rootProject.ext["spec-log1"] as String)
     /**
@@ -39,8 +39,6 @@ openApiGenerate {
             "collectionType" to "list"
         )
     )
-
-
 }
 
 dependencies {

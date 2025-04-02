@@ -1,4 +1,4 @@
-import com.otus.sy.catsitter.api.model.*
+import com.otus.sy.catsitter.api.models.*
 import models.*
 import ru.otus.otuskotlin.marketplace.common.exceptions.UnknownMkplCommand
 

@@ -1,7 +1,7 @@
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
-import com.otus.sy.catsitter.api.model.IRequest
-import com.otus.sy.catsitter.api.model.IResponse
+import com.otus.sy.catsitter.api.models.IRequest
+import com.otus.sy.catsitter.api.models.IResponse
 
 
 val apiMapper = JsonMapper.builder().run {

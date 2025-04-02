@@ -25,3 +25,4 @@ plugins {
 
 include(":cat-sitter-lib-logging-logback")
 include(":cat-sitter-lib-logging-common")
+include(":cat-sitter-libs-core")
