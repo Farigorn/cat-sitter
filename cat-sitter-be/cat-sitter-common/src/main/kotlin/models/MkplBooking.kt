@@ -8,8 +8,12 @@ data class MkplBooking(
     var endDate: String = "",
     var notes: String = "",
     var status: MkplBookingStatus = MkplBookingStatus.NONE,
+
     var lock: MkplBookingLock = MkplBookingLock.NONE,
-)
+
+    ) {
+    fun deepCopy(): MkplBooking = copy()
+}
 
 
 

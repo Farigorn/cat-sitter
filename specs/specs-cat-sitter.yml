@@ -252,8 +252,8 @@ components:
         - success
         - notFound
         - badId
-        - badTitle
-        - badDescription
+        - badOwnerId
+        - badSitterId
         - badVisibility
         - cannotDelete
         - badSearchString
